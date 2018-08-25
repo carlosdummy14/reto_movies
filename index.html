@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Reto GridLayout</title>
+   <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+   <style>
+   /* iconos */
+   @font-face {
+    font-family: 'icomoon';
+    src:  url('fonts/icomoon.eot?gefsyi');
+    src:  url('fonts/icomoon.eot?gefsyi#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?gefsyi') format('truetype'),
+    url('fonts/icomoon.woff?gefsyi') format('woff'),
+    url('fonts/icomoon.svg?gefsyi#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+ }
+
+ [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+ }
+
+ .icon-home:before {
+   content: "\e900";
+}
+.icon-configuracion:before {
+ content: "\e994";
+}
+.icon-trending:before {
+ content: "\e9a9";
+}
+.icon-like:before {
+ content: "\e9da";
+}
+/* iconos*/
+* {
+   /*border: 1px solid red;*/
+}
+body {
+   margin: 0;
+   font-family: Arial;
+}
+a {
+   text-decoration: none;
+   color: inherit;
+}
+.container {
+   display: grid;
+   grid-template: 60px repeat(3, 1fr) / 88px 1fr;
+   grid-template-areas: "header header" 
+   "menu section1"
+   "menu section2"
+   "menu section3";
+   height: 100vh;
+   grid-column-gap: 20px;
+}
+
+.headercontainer {
+   grid-area: header;
+   display: grid;
+   grid-auto-flow: column;
+   justify-content: space-between;
+   grid-template-columns: auto minmax(auto,500px) auto;
+   align-items: center;
+}
+.brand_container {
+   display: inline-block;
+   margin-left: 20px;
+}
+.brand_img {
+   width: 40px;
+   margin: 0;
+   /*      display: inline-block;*/
+}
+.brand_img img {
+   max-width: 100%;
+}
+.brand p {
+   /*display: inline-block;*/
+   font-family: 'Bungee Inline', cursive;
+   color:  #fc535a;
+   margin: 0;
+   font-weight: 400;
+   font-size: 25px;
+}
+.brand, .profile {
+   display: flex;
+   align-items: center;
+}
+.form {
+   margin: 0;
+       justify-self: center;
+    width: 394px;
+    text-align: center;
+}
+.form input{
+   width: 100%;
+   border-radius: 5px;
+   padding: 10px;
+   outline: 0;
+   border: 1px solid grey;
+   font-size: 16px;
+   box-sizing: border-box;
+}
+.profile_container{
+   display: inline-block;
+   margin-right: 20px;
+}
+.profile span {
+   font-size: 15px;
+   font-weight: 700;
+}
+.profile_container {
+}
+.profile_fig {
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+   background: #9bd7a4;
+   margin: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-left: 10px;
+}
+.profile_fig img {
+   height: 90%;
+}
+.profile a:after {
+   content: "▾";
+   font-size: 40px;
+}
+.menu {
+   grid-area: menu;
+   background: #fc535a; /* Old browsers */
+   background: -moz-linear-gradient(left, #fc535a 0%, #f17678 100%); /* FF3.6-15 */
+   background: -webkit-linear-gradient(left, #fc535a 0%, #f17678 100%); /* Chrome10-25,Safari5.1-6 */
+   background: linear-gradient(to right, #fc535a 0%, #f17678 100%);
+   /*background: #fc535a;*/
+   color: white;
+}
+.menu span {
+   display: block;
+   font-size: 30px;
+}
+.menu_top {
+   text-align: center;
+   margin: 0;
+   height: 100%;
+}
+.menu_top ul {
+   margin: 0;
+   padding: 0;
+    display: grid;
+    grid-template-rows: repeat(3,85px) 1fr;
+    height: 100%;
+    align-items: center;
+}
+.menu_top li {
+   display: block;
+   font-size: 16px;
+   font-weight: 700;
+}
+.menu_top li:last-child {
+   align-self: end;
+   padding-bottom: 20px;
+}
+
+.post {
+   margin: 0;
+   width: 300px;
+   height: 200px;
+   display: inline-block;
+   position: relative;
+}
+.post:hover .postoverlay{
+   top: 0;
+
+}
+.postimage {
+   margin: 0;
+}
+.postimage img {
+   width: 300px;
+   height: 200px;
+}
+.postoverlay {
+   position: absolute;
+   left: 0;
+   right: 0;
+   top: 40%;
+   bottom: 0;
+   background: rgba(252, 83, 90, .8);
+   overflow: hidden;
+   color: white;
+   transition: .8s;
+   padding: 10px 10px 10px 10px;
+}
+.postoverlay h3 {
+   margin: 0;
+}
+.postoverlay p {
+   margin-top: 5px;
+   font-size: 13px;
+   text-align: justify;
+}
+.section1 {
+   grid-area: section1;
+}
+.section2 {
+   grid-area: section2;
+}
+.section3 {
+   grid-area: section3;
+}
+.section {
+   display: grid;
+   grid-template: 40px 1fr / repeat(3, 1fr);
+   grid-gap: 2px 15px;
+   justify-content: space-between;
+   overflow: hidden;
+}
+.titsection {
+   font-size: 18px;
+   font-weight: 700;
+   grid-column-end: span 3;
+}
+</style>
+</head>
+<body>
+   <div class="container"> <!-- 7 x 4 -->
+      <header class="headercontainer"> <!-- 1 x 3 -->
+         <div class="brand_container">
+            <div class="brand">
+               <figure class="brand_img">
+                  <img src="palomitas.png" alt="">
+               </figure>
+               <p>Movi.es</p>
+            </div>
+         </div>
+         <form action="" class="form">
+            <input type="text" placeholder="Busca tu peli, actor, actriz o director favorito">
+         </form>
+         <div class="profile_container">
+            <div class="profile">
+               <span>Bambi Rodriguez</span>
+               <figure class="profile_fig">
+                  <img src="bambi.gif" alt="">
+               </figure>
+               <a href=""></a>
+            </div>
+         </div>
+      </header>
+      <nav class="menu">
+         <div class="menu_top">
+            <ul>
+               <li><a href=""><span class="icon-home"></span>Home</a></li>
+               <li><a href=""><span class="icon-trending"></span>Trending</a></li>
+               <li><a href=""><span class="icon-like"></span>Más Likes</a></li>
+               <li><a href=""><span class="icon-configuracion"></span>Ajustes</a></li>
+            </ul>
+         </div>
+      </nav>
+      <section class="section section1">
+         <p class="titsection">Ahora en el Cine</p>
+         <a href="" class="post">
+            <figure class="postimage">
+               <img src="peli.jpg" alt="">
+            </figure>
+            <span class="postoverlay">
+               <h3>The Secret Life of Pets</h3>
+               <p>The quiet life of a terrier named Max is upended whe his owner takes in Duke, a stray whom Max instantly dislikes.</p>
+            </span>
+         </a>
+         <a href="" class="post">
+            <figure class="postimage">
+               <img src="peli.jpg" alt="">
+            </figure>
+            <span class="postoverlay">
+               <h3>The Secret Life of Pets</h3>
+               <p>The quiet life of a terrier named Max is upended whe his owner takes in Duke, a stray whom Max instantly dislikes.</p>
+            </span>
+         </a>
+         <a href="" class="post">
+            <figure class="postimage">
+               <img src="peli.jpg" alt="">
+            </figure>
+            <span class="postoverlay">
+               <h3>The Secret Life of Pets</h3>
+               <p>The quiet life of a terrier named Max is upended whe his owner takes in Duke, a stray whom Max instantly dislikes.</p>
+            </span>
+         </a>
+      </section>      
+      <section class="section section2">
+         <p class="titsection">Aclamadas por la crítica</p>
+         <a href="" class="post">
+            <figure class="postimage">
+               <img src="peli.jpg" alt="">
+            </figure>
+            <span class="postoverlay">
+               <h3>The Secret Life of Pets</h3>
+               <p>The quiet life of a terrier named Max is upended whe his owner takes in Duke, a stray whom Max instantly dislikes.</p>
+            </span>
+         </a>
+         <a href="" class="post">
+            <figure class="postimage">
+               <img src="peli.jpg" alt="">
+            </figure>
+            <span class="postoverlay">
+               <h3>The Secret Life of Pets</h3>
+               <p>The quiet life of a terrier named Max is upended whe his owner takes in Duke, a stray whom Max instantly dislikes.</p>
+            </span>
+         </a>
+         <a href="" class="post">
+            <figure class="postimage">
+               <img src="peli.jpg" alt="">
+            </figure>
+            <span class="postoverlay">
+               <h3>The Secret Life of Pets</h3>
+               <p>The quiet life of a terrier named Max is upended whe his owner takes in Duke, a stray whom Max instantly dislikes.</p>
+            </span>
+         </a>
+      </section>      
+      <section class="section section3">
+         <p class="titsection">No te debes perder</p>
+         <a href="" class="post">
+            <figure class="postimage">
+               <img src="peli.jpg" alt="">
+            </figure>
+            <span class="postoverlay">
+               <h3>The Secret Life of Pets</h3>
+               <p>The quiet life of a terrier named Max is upended whe his owner takes in Duke, a stray whom Max instantly dislikes.</p>
+            </span>
+         </a>
+         <a href="" class="post">
+            <figure class="postimage">
+               <img src="peli.jpg" alt="">
+            </figure>
+            <span class="postoverlay">
+               <h3>The Secret Life of Pets</h3>
+               <p>The quiet life of a terrier named Max is upended whe his owner takes in Duke, a stray whom Max instantly dislikes.</p>
+            </span>
+         </a>
+         <a href="" class="post">
+            <figure class="postimage">
+               <img src="peli.jpg" alt="">
+            </figure>
+            <span class="postoverlay">
+               <h3>The Secret Life of Pets</h3>
+               <p>The quiet life of a terrier named Max is upended whe his owner takes in Duke, a stray whom Max instantly dislikes.</p>
+            </span>
+         </a>
+      </section>      
+   </div>
+
+</body>
+</html>
